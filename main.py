@@ -15,12 +15,9 @@ le_country = data["le_country"]
 le_education = data["le_education"]
 
 def show_predict_page():
-    st.title("SDE Salary Prediction")
-
-    st.write("""### Please fill the below informations to predict the salary""")
 
     countries = (
-        "United States",
+        "United States of America",
         "India",
         "United Kingdom",
         "Germany",
@@ -48,7 +45,7 @@ def show_predict_page():
 
     expericence = st.slider("Years of Experience", 0, 50, 3)
 
-    ok = st.button("Predict Salary")
+    ok = st.button("Predict Salary :money_mouth_face:")
     if ok:
         X = np.array([[country, education, expericence ]])
         X[:, 0] = le_country.transform(X[:,0])
@@ -56,6 +53,19 @@ def show_predict_page():
         X = X.astype(float)
 
         salary = regressor.predict(X)
-        st.subheader(f"The estimated salary is ${salary[0]:.2f}")
+        st.subheader(f"The estimated salary :moneybag: is ${salary[0]:.2f}")
+
+# Example script: my_script.py
+
+def main():
+    st.title("SDE Salary Prediction :female-technologist:")
+
+    st.write("""### Please fill the below informations to predict the salary""")
+
+    show_predict_page()
+
+if __name__ == "__main__":
+    main()
+
 
 
